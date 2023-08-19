@@ -1,10 +1,13 @@
 package com.app.vehicleRental.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -36,6 +39,11 @@ public class User {
 	@Column(name = "contact_no")
 	private long contactNo;
 	
+	@OneToMany(mappedBy = "owner")
+    private List<Car> cars;
+	
+	@OneToMany(mappedBy = "user")
+    private List<Booking> bookings;
 	
 	public User() {
 		super();
